@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="400">
 
 	<Border Padding="10">
 		<StackPanel>
             
+            <!-- Buttons (Apply, Reset, Refresh) -->
 			<Grid>
 
 				<Grid.ColumnDefinitions>
@@ -18,15 +19,80 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-				<Button Grid.Column="0" Content="Apply" />
+                
+				<Button Margin="0 0 10 0" Grid.Column="0" Content="Apply" />
 				<Button Grid.Column="1" Content="Reset" />
-                <Button Grid.Column="2" Content="Refresh" />
+                <Button Margin="10 0 0 0" Grid.Column="2" Content="Refresh" />
             </Grid>
+
+            <TextBlock Text="Pulse Properties" FontWeight="Bold" Margin="0 10"/>
             
-			<CheckBox x:Name="checkBox">
-				<ComboBox x:Name="comboBox" Width="120"/>
-			</CheckBox>
+            <!-- Description -->
+            <TextBlock Text="Description" />
+            <TextBox Padding="2" />
+
+            <!-- Status and Revision -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Margin="0 0 10 0">
+                    <TextBlock Text="Status" />
+                    <TextBox IsReadOnly="True" Background="#eee" Padding="2" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="1">
+                    <TextBlock Text="Revision" />
+                    <TextBox IsReadOnly="True" Background="#eee" Padding="2" />
+                </StackPanel>
+                    
+            </Grid>
+
+            <!-- Part Number -->
+            <TextBlock Text="Part Number" />
+            <TextBox IsReadOnly="True" Background="#eee" Padding="2" />
+
+            <!-- Raw Material -->
+            <TextBlock Text="Raw Material" FontWeight="Bold" Margin="0 10"/>
             
-		</StackPanel>
+            <!-- Material -->
+            <TextBlock Text="Material" />
+            <ComboBox Padding="2" />
+            
+            <!-- Manufacturing Info -->
+            <TextBlock Text="Manufacturing Info" FontWeight="Bold" Margin="0 10"/>
+
+            <!-- Work Centers -->
+            <TextBlock Text="Work Centers" Margin="0 0 0 10"/>
+            
+            <!-- Checkboxes -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Margin="0 0 10 0">
+                    <CheckBox Content="Weld"/>
+                    <CheckBox Content="Assembly"/>
+                    <CheckBox Content="Plasma"/>
+                    <CheckBox Content="Laser"/>
+                    <CheckBox Content="Purchase"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1">
+                    <CheckBox Content="Lathe"/>
+                    <CheckBox Content="Drill"/>
+                    <CheckBox Content="Fold"/>
+                    <CheckBox Content="Roll"/>
+                    <CheckBox Content="Saw"/>
+                </StackPanel>
+
+            </Grid>
+
+
+        </StackPanel>
 	</Border>
 </Window>
