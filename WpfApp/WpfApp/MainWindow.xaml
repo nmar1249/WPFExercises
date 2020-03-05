@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="400">
+        Title="MainWindow" Height="800" Width="400">
 
 	<Border Padding="10">
 		<StackPanel>
@@ -92,6 +92,42 @@
 
             </Grid>
 
+
+            <!-- Length -->
+            <TextBlock Text="Length" />
+            <TextBox Padding="2" />
+
+            <!-- Mass -->
+            <TextBlock Text="Mass" />
+            <TextBox IsReadOnly="True" Background="#eee" Padding="2" />
+
+            <!-- Finish -->
+            <TextBlock Text="Finish" />
+            <ComboBox SelectedIndex="0" Padding="2">
+                <ComboBoxItem>Painted</ComboBoxItem>
+                <ComboBoxItem>Not Painted</ComboBoxItem>
+            </ComboBox>
+
+            <!-- Purchase Info -->
+            <TextBlock Text="Finish" />
+            <ComboBox SelectedIndex="0" Padding="2">
+                <ComboBoxItem>Rubber</ComboBoxItem>
+                <ComboBoxItem>Not Rubber</ComboBoxItem>
+            </ComboBox>
+
+            <!-- Supplier Name -->
+            <TextBlock Text="Supplier Name" />
+            <TextBox Padding="2" />
+
+            <!-- Supplier Code -->
+            <TextBlock Text="Supplier Code" />
+            <TextBox Padding="2" />
+
+            <TextBlock Text="Additional Info" FontWeight="Bold" Margin="0 10"/>
+
+            <!-- Note -->
+            <TextBlock Text="Note" />
+            <TextBox Padding="2" />
 
         </StackPanel>
 	</Border>
