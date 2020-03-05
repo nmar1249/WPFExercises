@@ -60,7 +60,9 @@ namespace WPFApp_2
                 FolderView.Items.Add(item);
             }
         }
+        #endregion
 
+        #region Folder Expanded
         private void Folder_Expanded(object sender, RoutedEventArgs e)
         {
             var item = (TreeViewItem)sender;
@@ -75,6 +77,7 @@ namespace WPFApp_2
             //get full path
             var fullPath = (string)item.Tag;
 
+            #region Get Folders
             //create blank list
             var directories = new List<string>();
 
@@ -97,7 +100,7 @@ namespace WPFApp_2
                 var subItem = new TreeViewItem()
                 {
                     //set header as folder name
-                    Header = Path.GetDirectoryName(directoryPath),
+                    Header = GetFileFolderName(directoryPath),
                     //set tag as full path
                     Tag = directoryPath
                 };
@@ -109,6 +112,42 @@ namespace WPFApp_2
 
                 item.Items.Add(subItem);
             });
+
+            #endregion
+
+            #region Get Files
+
+            //create blank list
+            var files = new List<string>();
+
+
+            //try and get files from folder
+            //ignore issues 
+            try
+            {
+                var fs = Directory.GetFiles(fullPath);
+
+                if (fs.Length > 0)
+                    files.AddRange(fs);
+            }
+            catch { }
+
+            //for each directory
+            files.ForEach(filePath =>
+            {
+                //create directory item
+                var subItem = new TreeViewItem()
+                {
+                    //set header as folder name
+                    Header = GetFileFolderName(filePath),
+                    //set tag as full path
+                    Tag = filePath
+                };
+
+                item.Items.Add(subItem);
+            });
+
+            #endregion
         }
         #endregion
 
