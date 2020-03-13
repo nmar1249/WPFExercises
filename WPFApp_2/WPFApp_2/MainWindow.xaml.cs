@@ -31,36 +31,6 @@ namespace WPFApp_2
 
         #endregion
 
-        #region On Loaded
-        /// <summary>
-        /// When first app opens
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            //get every logical drive
-            foreach (var drive in Directory.GetLogicalDrives())
-            {
-                //create new item for it
-                var item = new TreeViewItem();
-
-                //set header and path
-                item.Header = drive;
-                item.Tag = drive;
-
-                //dummy item
-                item.Items.Add(null);
-
-                // listen for item expansion event
-                item.Expanded += Folder_Expanded;
-
-                //add to folderview
-                FolderView.Items.Add(item);
-            }
-        }
-        #endregion
 
         #region Folder Expanded
         private void Folder_Expanded(object sender, RoutedEventArgs e)
@@ -152,27 +122,6 @@ namespace WPFApp_2
         #endregion
 
 
-        public static string GetFileFolderName(string path)
-        {
-            // c:\something\a folder
-            // c:\something\a file.png
-
-            //return empty if no path
-            if (string.IsNullOrEmpty(path))
-                return string.Empty;
-
-            //normalized slashes, make them blackslashes
-            var normalizedPath = path.Replace('/', '\\');
-
-            //find last blackslash
-            var lastIndex = normalizedPath.LastIndexOf('\\');
-
-            //if we dont find a backslash, return the path
-            if (lastIndex <= 0)
-                return path;
-
-            //return string after last backslash
-            return path.Substring(lastIndex + 1);
-        }
+        
     }
 }
