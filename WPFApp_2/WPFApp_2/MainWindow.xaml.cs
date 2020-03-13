@@ -26,7 +26,7 @@ namespace WPFApp_2
         {
             InitializeComponent();
 
-            
+            this.DataContext = new Class1();
         }
 
         #endregion

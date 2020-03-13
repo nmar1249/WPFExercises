@@ -29,7 +29,7 @@ namespace WPFApp_2
                 return null;
 
             //get name of file/folder
-            var name = MainWindow.GetFileFolderName(path);
+            var name = DirectoryStructure.GetFileFolderName(path);
             //by default, assume file image
             var image = "Images/file.png";
 
