@@ -107,5 +107,8 @@
     <Resource Include="images\folder-closed.png" />
     <Resource Include="images\folder-open.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Directory\ViewModels\Base\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

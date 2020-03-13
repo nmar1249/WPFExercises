@@ -1,24 +1,46 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace WPFApp_2
 {
     public class RelayCommand : ICommand
     {
-        public event EventHandler CanExecuteChanged;
 
+        #region Private Members
+
+
+        //action to run
+        private Action mAction;
+
+        #endregion
+
+        #region Events
+        //event thats fired when canExecute object has changed
+        public event EventHandler CanExecuteChanged = (sender, e) => { };
+
+        #endregion
+
+
+
+        //default constructor
+        public RelayCommand(Action action)
+        {
+            mAction = action;
+        }
+
+        #region command methods
+
+        //relay command can always execute
         public bool CanExecute(object parameter)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public void Execute(object parameter)
         {
             throw new NotImplementedException();
         }
+
+        #endregion
     }
 }

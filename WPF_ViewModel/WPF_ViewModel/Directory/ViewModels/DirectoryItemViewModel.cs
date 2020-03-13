@@ -48,8 +48,14 @@ namespace WPFApp_2
         //expands directory
         private void Expand()
         {
+            if (this.Type == DirectoryItemType.File)
+                return;
 
-        }
+            var children = DirectoryStructure.GetDirectoryContent(this.FullPath);
+
+            this.Children = new ObservableCollection<DirectoryItemViewModel>(
+                                    children.Select(content => new DirectoryItemViewModel(content.FullPath, content.Type)));
+                    }
         
         //removing all children on lists, adds dummy icon to show expand icon
         private void ClearChildren()
@@ -67,5 +73,20 @@ namespace WPFApp_2
 
         //command to expand this item
         public ICommand ExpandCommand { get; set; }
+
+
+        #region Constructor
+
+        //default constructor
+        public DirectoryItemViewModel(string fullPath, DirectoryItemType type)
+        {
+            //create commands
+            this.ExpandCommand = new RelayCommand(Expand);
+
+            this.FullPath = fullPath;
+            this.Type = type;
+        }
+
+        #endregion
     }
 }
